@@ -8,11 +8,8 @@
 //
 // This object provides the autorization methods
 
-var Authorizer = {
+var Authorizer_ = {
 
-  // The web app to trigger the Trello authorization popup
-  scriptUri: 'https://script.google.com/macros/s/AKfycby36IYKZvmGJpQwDqfZzD2XRBFIPT2sYyfVsqNaH0Spm4LusDc/exec',
-  
   /**
    * 
    */
@@ -30,7 +27,7 @@ var Authorizer = {
     service.setPropertyStore(PropertiesService.getUserProperties());
     return service;
     
-  }, // Authorizer.getTrelloService
+  }, // Authorizer_.getTrelloService
 
   /**
    * 
@@ -42,7 +39,7 @@ var Authorizer = {
     .setPropertyStore(PropertiesService.getUserProperties())
     .reset();
     
-  }, // Authorizer.resetTrello()
+  }, // Authorizer_.resetTrello()
 
   /**
    * 
@@ -50,7 +47,7 @@ var Authorizer = {
 
   getToken: function() {
     
-    var service = Authorizer.getTrelloService()
+    var service = Authorizer_.getTrelloService()
     var token = ''
     
     if (service.hasAccess) {
@@ -63,19 +60,19 @@ var Authorizer = {
         
         } else {
           
-          throw new Error("trello API unauthorized! Please authorize at " + Authorizer.scriptUri)
+          throw new Error("Trello API unauthorized! Please authorize at " + AUTHORIZATION_URI)
         }
       
     } else {
       
-      throw new Error("trello API unauthorized! Please authorize at " + Authorizer.scriptUri)
+      throw new Error("Trello API unauthorized! Please authorize at " + AUTHORIZATION_URI)
     }
     
     return token
     
-  }, // Authorizer.getToken()
+  }, // Authorizer_.getToken()
   
-} // Authorizer
+} // Authorizer_
 
 /**
  * 
@@ -83,7 +80,7 @@ var Authorizer = {
 
 function  authCallback(request) {
 
-  var service = Authorizer.getTrelloService();
+  var service = Authorizer_.getTrelloService();
   var isAuthorized = service.handleCallback(request);
   
   if (isAuthorized) {
@@ -100,7 +97,7 @@ function  authCallback(request) {
 } // authCallback()
 
 function resetTrello(){
-   Authorizer.resetTrello();
+   Authorizer_.resetTrello();
 }
 
 function deleteUserProperties(){
