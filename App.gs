@@ -12,6 +12,21 @@ function App(version) {
   Api_.setVersion(setDefault_(version, '1'))
   
   /**
+   * If an error is thrown the first thing to try is displaying this
+   * URI to the user to trigger Trello authorization pop-up, then get
+   * them to try again.
+   */
+  
+  // TODO - Probably a nicer way of doing that
+  
+  App.prototype.getAuthorizationUri = function() {
+  
+    return AUTHORIZATION_URI
+  
+  } // App.prototype.getAuthorizationUrl()
+  
+  
+  /**
    *
    */
 
@@ -30,8 +45,9 @@ function App(version) {
     obj.boards = response
     
     this.boards = Wrapper.wrapObjects(this, new Board(), obj.boards);
-    return this.boards;
-  }
+    return this.boards
+    
+  } // App.prototype.getMyBoards()
 
   /**
    *
