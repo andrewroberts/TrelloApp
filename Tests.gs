@@ -9,11 +9,9 @@
  * Unit test functions
  */
 
-var API_VERSION = '1'
+function test_createCard(){
 
-function testOpen(){
-
-  var app = new App(API_VERSION)
+  var app = new App()
 
   // Look for 'RTM List 1' in the 'Rose Task Manager' and 
   // add a new card to it
@@ -26,12 +24,12 @@ function testOpen(){
       
       app.getBoardLists(board.getId()).some(function(list) {
 
-        if (list.getName() === 'RTM Test List 1') {
+        if (list.getName() === 'List 1') {
 
-          Logger.log('Found RTM list 1')
+          Logger.log('Found List 1')
 
           app.createCard({
-            name: 'test card 3', 
+            name: 'test card 4', 
             idList: list.getId(),
           }) 
           
