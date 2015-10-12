@@ -55,7 +55,7 @@ var Api_ = {
       optionalAddToUrl('filter') 
 
     var apiKey = getProperty_(PROPERTY_API_KEY, OnNull.ERROR, 'No API key')
-    var token = Authorizer.getToken()
+    var token = Authorizer_.getToken()
       
     serviceFullPath += "?key=" + apiKey + "&token=" + token
 
