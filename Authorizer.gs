@@ -1,34 +1,54 @@
+// 34567890123456789012345678901234567890123456789012345678901234567890123456789
+
+// JSHint - TODO
+/* jshint asi: true */
+
+// Authorizer.gs
+// =============
+//
+// This object provides the autorization methods
+
 var Authorizer = {
 
   // The web app to trigger the Trello authorization popup
   scriptUri: 'https://script.google.com/macros/s/AKfycby36IYKZvmGJpQwDqfZzD2XRBFIPT2sYyfVsqNaH0Spm4LusDc/exec',
   
-  user: Session.getEffectiveUser().getEmail(),
-  
+  /**
+   * 
+   */
+
   getTrelloService: function() {
     
     var service = OAuth1.createService(OAUTH_SERVICE_NAME);
     service.setAccessTokenUrl("https://trello.com/1/OAuthGetAccessToken");
     service.setRequestTokenUrl("https://trello.com/1/OAuthGetRequestToken");
     service.setAuthorizationUrl("https://trello.com/1/OAuthAuthorizeToken?scope=read,write");
-    service.setConsumerKey(PropertiesService.getScriptProperties().getProperty('PROPERTY_API_KEY'));
-    service.setConsumerSecret(PropertiesService.getScriptProperties().getProperty('PROPERTY_SECRET'));
-    service.setProjectKey(PropertiesService.getScriptProperties().getProperty('PROPERTY_PROJECT_KEY'));
+    service.setConsumerKey(getProperty_(PROPERTY_API_KEY, OnNull.ERROR));
+    service.setConsumerSecret(getProperty_(PROPERTY_SECRET, OnNull.ERROR));
+    service.setProjectKey(getProperty_(PROPERTY_PROJECT_KEY, OnNull.ERROR));
     service.setCallbackFunction('authCallback');
     service.setPropertyStore(PropertiesService.getUserProperties());
     return service;
     
   }, // Authorizer.getTrelloService
-  
-  resetTrello:function(){
+
+  /**
+   * 
+   */
+   
+  resetTrello:function() {
     
     OAuth1.createService('trello')
     .setPropertyStore(PropertiesService.getUserProperties())
     .reset();
     
   }, // Authorizer.resetTrello()
-  
-  getToken: function(){
+
+  /**
+   * 
+   */
+
+  getToken: function() {
     
     var service = Authorizer.getTrelloService()
     var token = ''
@@ -56,6 +76,10 @@ var Authorizer = {
   }, // Authorizer.getToken()
   
 } // Authorizer
+
+/**
+ * 
+ */
 
 function  authCallback(request) {
 
