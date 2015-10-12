@@ -2,9 +2,14 @@
 
 // JSHint (this file) - TODO
 
+// App.gs
+// ======
+//
+// This object provides the external interface to the TrelloApp library
+
 function App(version) {
 
-  API.setVersion(setDefault_(version, '1'))
+  Api_.setVersion(setDefault_(version, '1'))
   
   /**
    *
@@ -18,7 +23,7 @@ function App(version) {
       elements: 'boards',
     }
   
-    var responseJSON = API.fetch(config);
+    var responseJSON = Api_.fetch(config);
     var response = JSON.parse(responseJSON);
     
     var obj = {}
@@ -40,7 +45,7 @@ function App(version) {
       elements: 'lists',
     }
     
-    var responseJSON = API.fetch(config) 
+    var responseJSON = Api_.fetch(config) 
     var response = JSON.parse(responseJSON)
     
     var obj = {}
@@ -67,7 +72,7 @@ function App(version) {
       elements: 'organizations',
     }
     
-    var responseJSON = API.fetch(config) 
+    var responseJSON = Api_.fetch(config) 
     var response = JSON.parse(responseJSON)
     
     var obj = {}
@@ -119,7 +124,7 @@ function App(version) {
       payload: config,
     }
 
-    var responseJSON = API.fetch(options) 
+    var responseJSON = Api_.fetch(options) 
     var response = JSON.parse(responseJSON)
     
     // TODO - What's this look like??
