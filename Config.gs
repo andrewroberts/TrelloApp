@@ -30,7 +30,9 @@ var TRELLO_BASE_API = "https://api.trello.com"
 // ---------
 
 // TODO - Get all the strings into constants/Enums
+// TODO - Get the URI programmatically
 
+var AUTHORIZATION_URI = 'https://script.google.com/macros/s/AKfycby36IYKZvmGJpQwDqfZzD2XRBFIPT2sYyfVsqNaH0Spm4LusDc/exec'
 
 var PROPERTY_API_VERSION = SCRIPT_NAME + '_API_Version'
 
