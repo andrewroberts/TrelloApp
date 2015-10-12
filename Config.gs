@@ -15,11 +15,13 @@
  * Internal onfiguration settings.
  */
 
+// TODO - postfix local objects with _
+
 // Config
 // ------
 
 var SCRIPT_NAME = 'TrelloApp'
-var SCRIPT_VERSION = 'v1 (dev)'
+var SCRIPT_VERSION = 'v7 (dev)'
 
 var OAUTH_SERVICE_NAME = 'trello'
 var TRELLO_BASE_API = "https://api.trello.com"
