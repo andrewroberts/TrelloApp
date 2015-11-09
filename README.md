@@ -1,14 +1,17 @@
 # GAS-TrelloApp
 Google Apps Script library for using the [Trello RESTful API] (https://developers.trello.com/advanced-reference).
 
-At the moment it provides:
+It currently has on-going development in these areas:
 
 * authorization/authentication
-* listing of organisations and boards
+* object-oriented approach to Trello 'objects'
+
+It currently can be used to:
+* authorize / authenticate users
 * getting a list id
 * creation of new cards in an existing board
 
-You can use the TrelloApp library in you code by using the ID: **MOXamiHNCH44xpQh9H7FTudnfWGfgtIUb**.
+You can use the TrelloApp library in your code by using the ID: **MOXamiHNCH44xpQh9H7FTudnfWGfgtIUb**.
 
 Here's an example of using it to create a new card:
 
