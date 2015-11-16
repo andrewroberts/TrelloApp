@@ -7,9 +7,10 @@ It currently has on-going development in these areas:
 * object-oriented approach to Trello 'objects'
 
 It currently can be used to:
-* authorize / authenticate users
-* getting a list id
-* creation of new cards in an existing board
+* Authorize and Authenticate Users
+* Get all Boards and Orgnizations for Users
+* Get a List ID
+* Create a new Card in an Existing Board
 
 You can use the TrelloApp library in your code by using the ID: **MOXamiHNCH44xpQh9H7FTudnfWGfgtIUb**.
 

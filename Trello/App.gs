@@ -1,12 +1,16 @@
 // 34567890123456789012345678901234567890123456789012345678901234567890123456789
-
 // JSHint (this file) - TODO
 
 // App.gs
 // ======
 //
 // This object provides the external interface to the TrelloApp library
-
+/* blinks notes:
+	Just like API.gs I am unsure what the above line "MEANS".
+	My goal with this project is to see an object I can instantiate
+	regardless of anything else in a Google Doc/Sheet/Presentation/Drawing/etc.
+	and have the object manage Trello behind the scenes FOR the user.
+*/
 function App(version) {
 
   Api_.setVersion(setDefault_(version, '1'))
@@ -16,7 +20,6 @@ function App(version) {
    * URI to the user to trigger Trello authorization pop-up, then get
    * them to try again.
    */
-  
   // TODO - Probably a nicer way of doing that
   
   App.prototype.getAuthorizationUri = function() {
@@ -27,9 +30,8 @@ function App(version) {
   
   
   /**
-   *
+   * A method of App to get all boards of current user.
    */
-
   App.prototype.getMyBoards = function() {
   
     var config = {
@@ -50,9 +52,8 @@ function App(version) {
   } // App.prototype.getMyBoards()
 
   /**
-   *
+   * A method of App to get all lists from specific board
    */
-
   App.prototype.getBoardLists = function(boardId) {
   
     var config = {
@@ -77,9 +78,8 @@ function App(version) {
   } // App.getBoardLists()
 
   /**
-   *
+   * A method of App to get all Organizations that current user is a member of.
    */
-
   App.prototype.getMyOrganizations = function() {
   
     var config = {
@@ -103,7 +103,7 @@ function App(version) {
   }
   
   /**
-   * 
+   * A method of App that creates a card based on the config payload variable.
    */
 
   /*

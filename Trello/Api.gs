@@ -7,6 +7,7 @@
 // ======
 //
 //  This local object provides internal access to the Trello API.
+/*  Not sure what the above means. */
 // 
 
 var Api_ = {
@@ -14,11 +15,9 @@ var Api_ = {
   /**
    * The API object manages the API version value
    */
-
   setVersion: function (version) {
   
     // version checked in setProperty_()
-  
     setProperty_(
       PROPERTY_API_VERSION, 
       version, 
