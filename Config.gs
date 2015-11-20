@@ -21,9 +21,9 @@
 // ------
 
 var SCRIPT_NAME = 'TrelloApp'
-var SCRIPT_VERSION = 'v7 (dev)'
+var SCRIPT_VERSION = 'v14'
 
-var OAUTH_SERVICE_NAME = 'trello'
+var OAUTH_SERVICE_NAME = SCRIPT_NAME
 var TRELLO_BASE_API = "https://api.trello.com"
 
 // Constants
@@ -33,6 +33,7 @@ var TRELLO_BASE_API = "https://api.trello.com"
 // TODO - Get the URI programmatically
 
 var AUTHORIZATION_URI = 'https://script.google.com/macros/s/AKfycby36IYKZvmGJpQwDqfZzD2XRBFIPT2sYyfVsqNaH0Spm4LusDc/exec'
+// var AUTHORIZATION_URI = 'https://script.google.com/macros/s/AKfycbwmQ2GrmBTakJMo2aNa6XHii6DvhPMTcQXxOgwoKoE/dev'
 
 var PROPERTY_API_VERSION = SCRIPT_NAME + '_API_Version'
 
