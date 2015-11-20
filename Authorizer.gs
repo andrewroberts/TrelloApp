@@ -8,6 +8,8 @@
 //
 // This object provides the autorization methods
 
+// TODO - Says unknown app in auth popup
+
 var Authorizer_ = {
 
   /**
@@ -16,16 +18,16 @@ var Authorizer_ = {
 
   getTrelloService: function() {
     
-    var service = OAuth1.createService(OAUTH_SERVICE_NAME);
-    service.setAccessTokenUrl("https://trello.com/1/OAuthGetAccessToken");
-    service.setRequestTokenUrl("https://trello.com/1/OAuthGetRequestToken");
-    service.setAuthorizationUrl("https://trello.com/1/OAuthAuthorizeToken?scope=read,write");
-    service.setConsumerKey(getProperty_(PROPERTY_API_KEY, OnNull.ERROR));
-    service.setConsumerSecret(getProperty_(PROPERTY_SECRET, OnNull.ERROR));
-    service.setProjectKey(getProperty_(PROPERTY_PROJECT_KEY, OnNull.ERROR));
-    service.setCallbackFunction('authCallback');
-    service.setPropertyStore(PropertiesService.getUserProperties());
-    return service;
+    var service = OAuth1.createService(OAUTH_SERVICE_NAME)
+    service.setAccessTokenUrl("https://trello.com/1/OAuthGetAccessToken")
+    service.setRequestTokenUrl("https://trello.com/1/OAuthGetRequestToken")
+    service.setAuthorizationUrl("https://trello.com/1/OAuthAuthorizeToken?scope=read,write")
+    service.setConsumerKey(getProperty_(PROPERTY_API_KEY, OnNull.ERROR))
+    service.setConsumerSecret(getProperty_(PROPERTY_SECRET, OnNull.ERROR))
+    service.setProjectKey(getProperty_(PROPERTY_PROJECT_KEY, OnNull.ERROR))
+    service.setCallbackFunction('authCallback')
+    service.setPropertyStore(PropertiesService.getUserProperties())
+    return service
     
   }, // Authorizer_.getTrelloService
 
@@ -37,7 +39,7 @@ var Authorizer_ = {
     
     OAuth1.createService('trello')
     .setPropertyStore(PropertiesService.getUserProperties())
-    .reset();
+    .reset()
     
   }, // Authorizer_.resetTrello()
 
@@ -52,7 +54,7 @@ var Authorizer_ = {
     
     if (service.hasAccess) {
       
-      var accessData = JSON.parse(PropertiesService.getUserProperties().getProperty('oauth1.trello' ))
+      var accessData = JSON.parse(PropertiesService.getUserProperties().getProperty('oauth1.' + OAUTH_SERVICE_NAME ))
       
       if (accessData){
         
@@ -60,12 +62,12 @@ var Authorizer_ = {
         
         } else {
           
-          throw new Error("Trello API unauthorized! Please authorize at " + AUTHORIZATION_URI)
+          throw new AuthorizationError("Trello API unauthorized! Please authorize at " + AUTHORIZATION_URI)
         }
       
     } else {
       
-      throw new Error("Trello API unauthorized! Please authorize at " + AUTHORIZATION_URI)
+      throw new AuthorizationError("Trello API unauthorized! Please authorize at " + AUTHORIZATION_URI)
     }
     
     return token
@@ -78,32 +80,41 @@ var Authorizer_ = {
  * 
  */
 
-function  authCallback(request) {
+function authCallback(request) {
 
-  var service = Authorizer_.getTrelloService();
-  var isAuthorized = service.handleCallback(request);
+  var service = Authorizer_.getTrelloService()
+  var isAuthorized = service.handleCallback(request)
   
   if (isAuthorized) {
   
-    var template = HtmlService.createTemplateFromFile('Authorized');
-    var page = template.evaluate();
+    var template = HtmlService.createTemplateFromFile('Authorized')
+    var page = template.evaluate()
     return HtmlService.createHtmlOutput(page)
     
   } else {
   
-    return HtmlService.createHtmlOutput('Denied. You can close this page');
+    return HtmlService.createHtmlOutput('Denied. You can close this page')
   }
   
 } // authCallback()
 
-function resetTrello(){
-   Authorizer_.resetTrello();
-}
+// Custom Authorization Error
+// --------------------------
 
-function deleteUserProperties(){
-  PropertiesService.getUserProperties().deleteAllProperties()
-}
+/** 
+ * Create a new authorization Error object, that prototypally 
+ * inherits from the Error constructor. This can be used to 
+ * determine if the user needs to gain authorization from Trello
+ */
+ 
+function AuthorizationError(message) {
 
-function getUserData() {
-  Logger.log(PropertiesService.getUserProperties().getProperty('oauth1.trello' ))
-}
+  this.name = 'AuthorizationError'
+  this.message = message || 'Authorization error'
+  this.stack = (new Error()).stack
+  
+  AuthorizationError.prototype = Object.create(Error.prototype)
+  AuthorizationError.prototype.constructor = AuthorizationError
+  
+} // AuthorizationError
+
