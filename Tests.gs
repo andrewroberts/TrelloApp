@@ -24,7 +24,7 @@ function test_createCard(){
       
       app.getBoardLists(board.getId()).some(function(list) {
 
-        if (list.getName() === 'List 1') {
+        if (list.getName() === 'New') {
 
           Logger.log('Found List 1')
 
@@ -40,3 +40,19 @@ function test_createCard(){
   })
   
 } // testOpen()
+
+function test_resetTrello(){
+   Authorizer_.resetTrello();
+}
+
+function test_deleteUserProperties(){
+  PropertiesService.getUserProperties().deleteAllProperties()
+}
+
+function test_getUserData() {
+  Logger.log(PropertiesService.getUserProperties().getProperty('oauth1.' + OAUTH_SERVICE_NAME))
+}
+
+function test_getToken() {
+  Authorizer_.getToken()
+}
