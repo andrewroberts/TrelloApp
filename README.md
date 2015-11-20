@@ -8,7 +8,9 @@ At the moment it provides:
 * getting a list id
 * creation of new cards in an existing board
 
-You can use the TrelloApp library in you code by using the ID: **MOXamiHNCH44xpQh9H7FTudnfWGfgtIUb**.
+The full API to the library is described in [App.gs] (https://github.com/andrewroberts/GAS-TrelloApp/blob/master/App.gs)
+
+You can [use the TrelloApp library] (https://developers.google.com/apps-script/guide_libraries) in you code by using the ID: **MOXamiHNCH44xpQh9H7FTudnfWGfgtIUb**.
 
 Here's an example of using it to create a new card:
 
