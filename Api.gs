@@ -3,7 +3,7 @@
 // JSHint - TODO
 /* jshint asi: true */
 
-// API.gs
+// Api.gs
 // ======
 //
 //  This local object provides internal access to the Trello API.
@@ -57,7 +57,7 @@ var Api_ = {
     var apiKey = getProperty_(PROPERTY_API_KEY, OnNull.ERROR, 'No API key')
     var token = Authorizer_.getToken()
       
-    serviceFullPath += "?key=" + apiKey + "&token=" + token
+    serviceFullPath += '?key=' + apiKey + '&token=' + token + '&name=' + SCRIPT_NAME
 
     var options = {
       oAuthServiceName: OAUTH_SERVICE_NAME,
@@ -90,4 +90,4 @@ var Api_ = {
     
   }, // Api_.fetch()
   
-} // API
+} // Api
