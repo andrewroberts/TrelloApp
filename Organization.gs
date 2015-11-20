@@ -17,7 +17,7 @@ function Organizations() {
     return this.wrapped.id;
   }
 
-  Organizations.prototype.GetbillableMemberCount =function() {
+  Organizations.prototype.GetbillableMemberCount = function() {
     return this.wrapped.billableMemberCount;
   }
   
