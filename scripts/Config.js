@@ -21,7 +21,7 @@
 // ------
 
 var SCRIPT_NAME = 'TrelloApp'
-var SCRIPT_VERSION = 'v14'
+var SCRIPT_VERSION = 'v0.1'
 
 var OAUTH_SERVICE_NAME = SCRIPT_NAME
 var TRELLO_BASE_API = "https://api.trello.com"
