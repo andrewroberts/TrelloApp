@@ -14,10 +14,19 @@
 // The library user can also throw this error if it suspects authorisation is
 // needed
 
+/**
+ * This is the entry point into this library:
+ *
+ *   var trelloApp = new TrelloApp.App('1', PropertiesService.getUserProperties)
+ *
+ *  @param {object} propertiesService The PropertiesService object to use
+ *  @param {string} version [OPTIONAL] The version of the Trello API being used, defaults to 1.0
+ */
+
 function App(version) {
 
   Api_.setVersion(setDefault_(version, '1'))
-  
+    
   /**
    * If an error is thrown the first thing to try is displaying this
    * URI to the user to trigger Trello authorization pop-up, then get
@@ -67,7 +76,7 @@ function App(version) {
     var obj = {}
     obj.boards = response
     
-    this.boards = Wrapper.wrapObjects(this, new Board(), obj.boards)
+    this.boards = Wrapper_.wrapObjects(this, new Board_(), obj.boards)
     return this.boards
     
   } // App.prototype.getMyBoards()
@@ -97,7 +106,7 @@ function App(version) {
     var obj = {}
     obj.lists = response
     
-    this.lists = Wrapper.wrapObjects(this, new List(), obj.lists)
+    this.lists = Wrapper_.wrapObjects(this, new List_(), obj.lists)
     
     return this.lists
     
@@ -128,9 +137,9 @@ function App(version) {
     var obj = {}
     obj.organizations = response
     
-    this.organizations = Wrapper.wrapObjects(
+    this.organizations = Wrapper_.wrapObjects(
       this, 
-      new Organizations(), 
+      new Organizations_(), 
       obj.organizations)
     
     return this.organizations
