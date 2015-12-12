@@ -21,13 +21,15 @@
 // ------
 
 var SCRIPT_NAME = 'TrelloApp'
-var SCRIPT_VERSION = 'v0.1'
+var SCRIPT_VERSION = 'v0.1.1'
 
-var OAUTH_SERVICE_NAME = SCRIPT_NAME
-var TRELLO_BASE_API = "https://api.trello.com"
+var PRODUCTION_VERSION = true
 
 // Constants
 // ---------
+
+var OAUTH_SERVICE_NAME = SCRIPT_NAME
+var TRELLO_BASE_API = "https://api.trello.com"
 
 // TODO - Get all the strings into constants/Enums
 // TODO - Get the URI programmatically
@@ -48,9 +50,11 @@ var PROPERTY_PROJECT_KEY = SCRIPT_NAME + '_PROJECT_KEY'
 /**
  * 
  */
-
+/*
 function functionTemplate() {
 
   
 
 } // functionTemplate()
+
+*/
