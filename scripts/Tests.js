@@ -9,6 +9,24 @@
  * Unit test functions
  */
 
+/*
+
+function test_dumpConfig() {
+
+  if (PRODUCTION_VERSION) {
+    return
+  }
+
+  Logger.log(PropertiesService.getUserProperties().getProperties())
+//  Logger.log(PropertiesService.getDocumentProperties().getProperties())
+//  Logger.log(PropertiesService.getScriptProperties().getProperties())  
+}
+
+function test_reset() {
+  Authorizer_.resetTrello()
+  test_dumpConfig()
+}
+
 function test_createCard(){
 
   var app = new App()
@@ -56,3 +74,5 @@ function test_getUserData() {
 function test_getToken() {
   Authorizer_.getToken()
 }
+
+*/
