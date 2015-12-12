@@ -4,17 +4,17 @@
  * @constructor
  */
 
-function List() {
+function List_() {
 
  /**
   * @return {string} The id of this List
   */
-  List.prototype.getName = function() {
+  List_.prototype.getName = function() {
     return this.wrapped.name;
   }
   
-  List.prototype.getId = function() {
+  List_.prototype.getId = function() {
     return this.wrapped.id;
   }
   
-} // List
+} // List_
