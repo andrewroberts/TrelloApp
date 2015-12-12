@@ -4,17 +4,17 @@
  * @constructor
  */
 
-function Board() {
+function Board_() {
 
  /**
   * @returns {string} The id of this Segment
   */
-  Board.prototype.getName = function() {
+  Board_.prototype.getName = function() {
     return this.wrapped.name;
   }
   
-  Board.prototype.getId = function() {
+  Board_.prototype.getId = function() {
     return this.wrapped.id;
   }
   
-} // Board
+} // Board_
