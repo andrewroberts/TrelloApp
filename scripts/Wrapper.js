@@ -1,4 +1,4 @@
-var Wrapper = {
+var Wrapper_ = {
   
   wrapObjects: function(app, wrapper, wrappeds) {
   
@@ -8,7 +8,7 @@ var Wrapper = {
       
       for (var i = 0; i < wrappeds.length; i++) {
       
-        var newObject = Wrapper.wrapObject(app, wrapper, wrappeds[i]);
+        var newObject = this.wrapObject(app, wrapper, wrappeds[i]);
         newObjects.push(newObject);
       }
     }
@@ -28,5 +28,5 @@ var Wrapper = {
     return w;
   },
  
-} // Wrapper
+} // Wrapper_
 
