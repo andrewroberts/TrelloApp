@@ -4,21 +4,22 @@
  * @constructor
 */
 
-function Organizations() {
+function Organizations_() {
 
  /**
   * @return {string} The id of this Segment
   */
-  Organizations.prototype.getDisplayName = function() {
+  
+  Organizations_.prototype.getDisplayName = function() {
     return this.wrapped.displayName;
   }
   
-  Organizations.prototype.getId = function() {
+  Organizations_.prototype.getId = function() {
     return this.wrapped.id;
   }
 
-  Organizations.prototype.GetbillableMemberCount = function() {
+  Organizations_.prototype.GetbillableMemberCount = function() {
     return this.wrapped.billableMemberCount;
   }
   
-} // Organizations
+} // Organizations_
