@@ -52,9 +52,7 @@ var OnNull = Object.freeze({
 
 function getProperty_(name, errorOnNull, errorMessage) {
 
-  var value = PropertiesService
-    .getScriptProperties()
-    .getProperty(name)
+  var value = PropertiesService.getUserProperties().getProperty(name)
 
   if (errorOnNull && value === null) {
     throw new Error(errorMessage)
@@ -71,10 +69,36 @@ function getProperty_(name, errorOnNull, errorMessage) {
 function setProperty_(name, value, errorString) {
 
   assertStringNotEmpty_(value, errorString)
-
-  PropertiesService
-    .getScriptProperties()
-    .setProperty(name, value)
+  PropertiesService.getUserProperties().setProperty(name, value)
 
 } // setProperty_()
 
+/**
+ * This is manually created and kept in the Script Properties to keep it secret
+ */
+
+function getApiKey_() {
+
+  return PropertiesService.getScriptProperties().getProperty(PROPERTY_API_KEY)
+
+} // getApiKey_()
+
+/**
+ * This is manually created and kept in the Script Properties to keep it secret
+ */
+
+function getSecret_() {
+
+  return PropertiesService.getScriptProperties().getProperty(PROPERTY_SECRET)
+
+} // getSecret_()
+
+/**
+ * 
+ */
+
+function getProjectKey_() {
+
+  return ScriptApp.getProjectKey()
+
+} // getProjectKey_()
