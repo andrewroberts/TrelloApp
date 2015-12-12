@@ -8,7 +8,26 @@
 //
 // This object provides the autorization methods
 
-// TODO - Says unknown app in auth popup (Issue #2)
+/**
+ * The web app that allows the user to open the Trello auth window
+ */
+
+function doGet(e) {
+
+  // TODO - Hard code this for now, and assume the calling script is using
+  // this service
+  
+  var service = Authorizer_.getTrelloService()  
+
+  // The underlying library doesn't add the app name so tag it on here
+  var authorizationUrl = service.authorize() + '&name=' + OAUTH_SERVICE_NAME
+  
+  var template = HtmlService.createTemplateFromFile('Authorize')
+  template.authorizationUrl = authorizationUrl
+  var page = template.evaluate();
+  return HtmlService.createHtmlOutput(page)
+  
+} // doGet()
 
 var Authorizer_ = {
 
@@ -22,9 +41,9 @@ var Authorizer_ = {
     service.setAccessTokenUrl("https://trello.com/1/OAuthGetAccessToken")
     service.setRequestTokenUrl("https://trello.com/1/OAuthGetRequestToken")
     service.setAuthorizationUrl("https://trello.com/1/OAuthAuthorizeToken?scope=read,write")
-    service.setConsumerKey(getProperty_(PROPERTY_API_KEY, OnNull.ERROR))
-    service.setConsumerSecret(getProperty_(PROPERTY_SECRET, OnNull.ERROR))
-    service.setProjectKey(getProperty_(PROPERTY_PROJECT_KEY, OnNull.ERROR))
+    service.setConsumerKey(getApiKey_())
+    service.setConsumerSecret(getSecret_())
+    service.setProjectKey(getProjectKey_())
     service.setCallbackFunction('authCallback')
     service.setPropertyStore(PropertiesService.getUserProperties())
     return service
@@ -37,9 +56,12 @@ var Authorizer_ = {
    
   resetTrello:function() {
     
-    OAuth1.createService('trello')
-    .setPropertyStore(PropertiesService.getUserProperties())
-    .reset()
+    OAuth1
+      .createService(OAUTH_SERVICE_NAME)
+      .setPropertyStore(PropertiesService.getUserProperties())
+      .reset()
+    
+    PropertiesService.getUserProperties().deleteAllProperties()
     
   }, // Authorizer_.resetTrello()
 
@@ -49,12 +71,16 @@ var Authorizer_ = {
 
   getToken: function() {
     
-    var service = Authorizer_.getTrelloService()
+    var service = this.getTrelloService()
     var token = ''
     
-    if (service.hasAccess) {
+    if (service.hasAccess()) {
       
-      var accessData = JSON.parse(PropertiesService.getUserProperties().getProperty('oauth1.' + OAUTH_SERVICE_NAME ))
+      var accessDataJson = PropertiesService
+        .getUserProperties()
+        .getProperty('oauth1.' + OAUTH_SERVICE_NAME)
+        
+      var accessData = JSON.parse(accessDataJson)
       
       if (accessData) {
         
