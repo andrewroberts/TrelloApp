@@ -1,5 +1,5 @@
 # Google Apps Script Project: GAS-TrelloApp
-This repo (GAS-TrelloApp) was automatically updated on 27 November 2015 12:10:47 GMT by GasGit
+This repo (GAS-TrelloApp) was automatically updated on 12 December 2015 10:58:34 GMT by GasGit
 
 For more information see the [desktop liberation site](http://ramblings.mcpher.com/Home/excelquirks/drivesdk/gettinggithubready "desktop liberation") or [contact me on G+](https://plus.google.com/+BruceMcpherson "Bruce McPherson - GDE")
 ## Details for Apps Script project GAS-TrelloApp
@@ -12,7 +12,6 @@ The shared link for [GAS-TrelloApp is here](https://script.google.com/d/1DExEOBD
 Api| server_js
 Authorizer| server_js
 App| server_js
-TrelloApp| server_js
 Authorize| html
 Authorized| html
 Wrapper| server_js
@@ -25,11 +24,11 @@ List| server_js
 ### Directly referenced libraries
 *library*|*identifier*|*key*|*version*|*dev mode*|*source*|
 --- | --- | --- | --- | --- | --- 
-OAuth1| OAuth1|Mb2Vpd5nfD3Pz-_a-39Q4VfxhMjh3Sh48|10|no|no
+OAuth1| OAuth1|Mb2Vpd5nfD3Pz-_a-39Q4VfxhMjh3Sh48|11|no|no
 ### All dependencies and sub dependencies
 *library*|*identifier*|*key*|*version*|*dev mode*|*source*|
 --- | --- | --- | --- | --- | --- 
-OAuth1| OAuth1|Mb2Vpd5nfD3Pz-_a-39Q4VfxhMjh3Sh48|10|no|no
+OAuth1| OAuth1|Mb2Vpd5nfD3Pz-_a-39Q4VfxhMjh3Sh48|11|no|no
 ### Enabled Google Services
 no libraries discovered
 ###Need more detail ?
