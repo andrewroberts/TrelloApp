@@ -19,10 +19,7 @@ var Api_ = {
   
     // version checked in setProperty_()
   
-    setProperty_(
-      PROPERTY_API_VERSION, 
-      version, 
-      'No valid version passed to App.init()')
+    setProperty_(PROPERTY_API_VERSION, version, 'No valid version')
 
   }, // Api_.setVersion()
 
@@ -56,7 +53,7 @@ var Api_ = {
       optionalAddToUrl('elements') + 
       optionalAddToUrl('filter') 
 
-    var apiKey = getProperty_(PROPERTY_API_KEY, OnNull.ERROR, 'No API key')
+    var apiKey = getApiKey_()
     var token = Authorizer_.getToken()
       
     serviceFullPath += '?key=' + apiKey + '&token=' + token + '&name=' + SCRIPT_NAME
