@@ -1,4 +1,4 @@
-# GAS-TrelloApp
+# TrelloApp
 Google Apps Script library for using the [Trello RESTful API] (https://developers.trello.com/advanced-reference).
 
 At the moment it provides:
