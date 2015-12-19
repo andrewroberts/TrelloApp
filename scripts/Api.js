@@ -50,18 +50,21 @@ var Api_ = {
       '/' + version +
       '/' + config.service + 
       optionalAddToUrl('id') + 
-      optionalAddToUrl('elements') + 
-      optionalAddToUrl('filter') 
+      optionalAddToUrl('elements')
 
-    var apiKey = getApiKey_()
-    var token = Authorizer_.getToken()
+    var apiKey = '?key=' + getApiKey_()
+    var token = '&token=' + Authorizer_.getToken()
+    var name = '&name=' + SCRIPT_NAME
+    var filter = config.hasOwnProperty('filter') ? '&filter=' + config.filter: ''
       
-    serviceFullPath += '?key=' + apiKey + '&token=' + token + '&name=' + SCRIPT_NAME
+    serviceFullPath += apiKey + token + name + filter
+
+    Log_.fine('serviceFullPath: ' + serviceFullPath)
 
     var options = {
       oAuthServiceName: OAUTH_SERVICE_NAME,
       oAuthUseToken: 'always',
-      muteHttpExceptions: true,
+//      muteHttpExceptions: true,
     }
 
     if (config.hasOwnProperty('httpMethod')) {
@@ -71,7 +74,7 @@ var Api_ = {
     if (config.hasOwnProperty('payload')) {
       options.payload = config.payload
     }
-    
+        
     var response = UrlFetchApp.fetch(serviceFullPath, options)
     var result = null
     
@@ -90,7 +93,7 @@ var Api_ = {
     
     function optionalAddToUrl(option) {   
     
-      return config.hasOwnProperty(option) ? '/' + config[option] : ''
+      return config.hasOwnProperty(option) ? ('/' + config[option]) : ''
       
     } // Api_.fetch.optionalAddToUrl()
     
