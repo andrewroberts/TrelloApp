@@ -21,9 +21,51 @@
 // ------
 
 var SCRIPT_NAME = 'TrelloApp'
-var SCRIPT_VERSION = 'v0.1.1'
+var SCRIPT_VERSION = 'v0.2.1'
 
 var PRODUCTION_VERSION = true
+
+// Log Library
+// -----------
+
+// This is an dummy version of the Log library (MqTFuiXcPtS5rVUZ_jC9Z4tnfWGfgtIUb) v14
+var Log_ = {
+
+  // Functions
+
+  init: function(initOptions) {},
+  severe: function(message, options) {},
+  warning: function(message, options) {},
+  info: function(message, options) {},
+  fine: function(message, options) {},
+  finer: function(message, options) {},
+  finest: function(message, options) {},
+  functionEntryPoint: function(message, options) {},
+  getLevel: function() {},
+  setLevel: function (level) {},
+  blConfig: function(message, options) {},
+  clear: function() {},
+  
+  // Enums
+  
+  DisplayFunctionNames: Object.freeze({
+    YES: true,
+    NO: false,
+  }),
+ 
+  Level: Object.freeze({
+    SEVERE: '',
+    WARNING: 'WARNING',
+    INFO: 'INFO',
+    FINE: 'FINE',
+    FINER: 'FINER',
+    FINEST: 'FINEST',
+  }),
+
+} // Log_
+
+var LOG_LEVEL = PRODUCTION_VERSION ? Log_.Level.INFO : Log_.Level.FINEST
+var LOG_DISPLAY_FUNCTION_NAMES = PRODUCTION_VERSION ? Log_.DisplayFunctionNames.NO : Log_.DisplayFunctionNames.YES 
 
 // Constants
 // ---------
