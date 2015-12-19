@@ -14,19 +14,44 @@
 // The library user can also throw this error if it suspects authorisation is
 // needed
 
+// TODO - Use the Log library throughout the code
+
 /**
  * This is the entry point into this library:
  *
- *   var trelloApp = new TrelloApp.App('1', PropertiesService.getUserProperties)
+ *   var trelloApp = new TrelloApp.App({
+ *     version: '1',
+ *     log: Log,
+ *   })
  *
- *  @param {object} propertiesService The PropertiesService object to use
- *  @param {string} version [OPTIONAL] The version of the Trello API being used, defaults to 1.0
+ * @param {object} { 
+ *   version: {string} version [OPTIONAL] The version of the Trello API being used, defaults to 1.0
+ *   log: {object} logging library [OPTIONAL] a logging object that provides an API similar to Log (MqTFuiXcPtS5rVUZ_jC9Z4tnfWGfgtIUb) - see EmptyLogLibrary
+ * }
  */
 
-function App(version) {
+function App(config) {
 
-  Api_.setVersion(setDefault_(version, '1'))
+  // Extract the config parameters
+
+  var version = config.hasOwnProperty('version') ? config.version : '1'
+  Api_.setVersion(version)
+
+  var spreadsheet = SpreadsheetApp.getActiveSpreadsheet()
+
+  if (config.hasOwnProperty('log') && spreadsheet !== null) {
+
+    // This library is running in the context of a spreadsheet so use
+    // it for trace logging
+
+    Log_ = config.log
     
+    Log_.init({
+      level: LOG_LEVEL, 
+      sheetId: spreadsheet.getId(),
+      displayFunctionNames: LOG_DISPLAY_FUNCTION_NAMES})
+  }
+  
   /**
    * If an error is thrown the first thing to try is displaying this
    * URI to the user to trigger Trello authorization pop-up, then get
@@ -52,19 +77,26 @@ function App(version) {
   } // App.prototype.reset()
   
   /**
-   * Get all of the users boards.
+   * Get the users boards
+   *
+   * @param {object} params 
+   *   filter: {string} one of the Trello API filter values
    *
    * @return {object} wrapped board object or null
    */
 
-  App.prototype.getMyBoards = function() {
-  
+  App.prototype.getMyBoards = function(params) {
+      
     var config = {
       service: 'members',
       id: 'me',
       elements: 'boards',
     }
-  
+
+    if (typeof params !== 'undefined' && params.hasOwnProperty('filter')) {
+      config.filter = params.filter
+    }
+    
     var responseJSON = Api_.fetch(config)
     
     if (responseJSON === null) {
