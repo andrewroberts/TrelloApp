@@ -34,9 +34,6 @@ You can also see an example of the auth flow and an example of TrelloApp's use i
 
 function test_createCard() {
 
-  // Look for 'RTM List 1' in the 'Rose Task Manager' board and 
-  // add a new card to it
-
   try {
 
     var trelloApp = new TrelloApp.App()    
@@ -64,7 +61,6 @@ function test_createCard() {
   
   function showAuthorisationDialog() {
       
-    var trelloApp = new TrelloApp.App()
     var authorizationUrl = trelloApp.getAuthorizationUri()
     
     Dialog.show(
