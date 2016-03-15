@@ -14,11 +14,11 @@ The full API to the library is described in [App.gs] (https://github.com/andrewr
 
 You can [use the TrelloApp library] (https://developers.google.com/apps-script/guide_libraries) in you code by using the ID: **MOXamiHNCH44xpQh9H7FTudnfWGfgtIUb**.
 
-# Example Usuage
+# Example Usage
 
 Here's an example of using it to list your boards:
 
-* Create a new GSheet - this gives you a UI to initiate the auth flow.
+* Create a new GSheet - this gives you an UI to initiate the auth flow.
 
 * Copy this code into the GSheet's script.
 
