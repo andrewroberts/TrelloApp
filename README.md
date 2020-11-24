@@ -10,9 +10,9 @@ At the moment it provides:
 * creating new lists
 * creating new cards
 
-The full API to the library is described in [App.gs] (https://github.com/andrewroberts/GAS-TrelloApp/blob/master/App.gs)
+The full API to the library is described in [App.gs](https://github.com/andrewroberts/TrelloApp/blob/master/scripts/App.js)
 
-You can [use the TrelloApp library] (https://developers.google.com/apps-script/guide_libraries) in you code by using the ID: **MOXamiHNCH44xpQh9H7FTudnfWGfgtIUb**.
+You can [use the TrelloApp library](https://developers.google.com/apps-script/guide_libraries) in you code by using the ID: **MOXamiHNCH44xpQh9H7FTudnfWGfgtIUb**.
 
 # Example Usage
 
@@ -28,7 +28,7 @@ Here's an example of using it to list your boards:
 
 * Run the code a second time to get the boards JSON - Looking at the Logs you should see the JSON for all your boards.
 
-You can also see an example of the auth flow and an example of TrelloApp's use in code in the [TrelloSync add-ons] (https://github.com/andrewroberts/TrelloSync). 
+You can also see an example of the auth flow and an example of TrelloApp's use in code in the [TrelloSync add-ons](https://github.com/andrewroberts/TrelloSync). 
 
 ```
 
