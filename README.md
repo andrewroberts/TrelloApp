@@ -32,7 +32,7 @@ You can also see an example of the auth flow and an example of TrelloApp's use i
 
 ```
 
-function test_createCard() {
+function test_getBoards() {
 
   try {
 
